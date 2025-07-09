@@ -1,11 +1,6 @@
+"""This module implements examples of SOLID principles in Python."""
 from abc import ABC, abstractmethod
-import logging
-
-logging.basicConfig(
-    format="%(asctime)s %(levelname)s %(message)s",
-    level=logging.DEBUG,
-    handlers=[logging.StreamHandler()],
-)
+from logger import logger
 
 
 class Author:
@@ -78,18 +73,18 @@ class LibraryManager:
         for book in self.library.books:
             if book.title == title:
                 self.library.remove_book(book)
-                logging.info("Book '%s' successfully removed", title)
+                logger.info("Book '%s' successfully removed", title)
                 return
-        logging.warning("Book '%s' not found", title)
+        logger.warning("Book '%s' not found", title)
 
     def show_books(self) -> None:
         """Show all books in lib"""
         books = self.library.get_books()
         if not books:
-            logging.warning("Books was not found.")
+            logger.warning("Books was not found.")
             return
         for book in books:
-            logging.info(
+            logger.info(
                 "Title: %s, Author: %s, Year: %s",
                 book.title,
                 book.author.name,

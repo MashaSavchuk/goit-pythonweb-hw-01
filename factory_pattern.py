@@ -1,11 +1,6 @@
+"""This module implements examples of SOLID principles in Python."""
 from abc import ABC, abstractmethod
-import logging
-
-logging.basicConfig(
-    format="%(asctime)s %(levelname)s %(message)s",
-    level=logging.DEBUG,
-    handlers=[logging.StreamHandler()],
-)
+from logger import logger
 
 
 class Vehicle:
@@ -18,7 +13,7 @@ class Vehicle:
 
     def start_engine(self) -> None:
         """Satrt engine method"""
-        logging.info(
+        logger.info(
             "%s %s (%s Spec): Двигун запущено", self.make, self.model, self.spec_region
         )
 
